@@ -59,21 +59,18 @@ class TestConvUtils:
     def test_calc_filter(self, submatrix, kernel):
         result = conv.calc_filter(submatrix, kernel)
 
-        assert isinstance(result, np.int32)
         assert result == 0
 
     @pytest.mark.parametrize("positions, expected", TEST_SUBMATRIX.values(), ids=TEST_SUBMATRIX.keys())
     def test_get_submatrix(self, image, positions, expected):
         result = conv.get_submatrix(positions, image)
 
-        assert isinstance(result, np.ndarray)
         assert (result == expected).all()
 
     @pytest.mark.parametrize("padding, expected", TEST_PADDING.values(), ids=TEST_PADDING.keys())
     def test_padding(self, image, kernel, padding, expected):
         result = conv.padding(image, kernel, padding)
 
-        assert isinstance(result, np.ndarray)
         assert result.shape == expected
 
     @pytest.mark.parametrize("pad, expected", TEST_CONV2D.values(), ids=TEST_CONV2D.keys())
