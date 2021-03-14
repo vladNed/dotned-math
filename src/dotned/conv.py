@@ -58,14 +58,13 @@ def conv2D(image: np.ndarray, kernel: np.ndarray, pad: str) -> np.ndarray:
     """
     Calculates a convolution
     """
-    pad = True if padding == 'same' else False
+    pad = True if pad == 'same' else False
     image = padding(image, kernel, pad)
     result = np.zeros(calc_final_shape(image, kernel), dtype=int)
 
     filter_max_row, filter_max_col = kernel.shape
     start_row_pos = filter_max_row
     start_col_pos = filter_max_col
-
 
     for i in range(result.shape[0]):
         for j in range(result.shape[1]):
